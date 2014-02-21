@@ -6,4 +6,7 @@ category:
 tags: []
 ---
 {% include JB/setup %}
-Let me try to write something
+
+第一篇
+
+	HelloWorld!
