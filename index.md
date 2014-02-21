@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Brian Yuan's blog
+tagline: 袁小雍的博客
 ---
 {% include JB/setup %}
 
