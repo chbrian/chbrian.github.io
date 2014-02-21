@@ -5,7 +5,7 @@ tagline: 袁小雍的博客
 ---
 {% include JB/setup %}
 
-我的文章：
+## 我的文章：
 
 <ul class="posts">
   {% for post in site.posts %}
