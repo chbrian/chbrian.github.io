@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Yuan Xiaoyong's Blog
-tagline: tech, thought, and communication
+title: tech, thought, and communication
 ---
 {% include JB/setup %}
 
