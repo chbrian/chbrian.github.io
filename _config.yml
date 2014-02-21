@@ -11,6 +11,9 @@ pygments: true
 title : Brian Yuan's Blog
 tagline: tech, thought, and communication
 
+timezone: Asia/Shanghai
+encoding: UTF-8
+
 author :
   name : Brian Yuan(袁小雍)
   email : chbrian77@gmail.com
