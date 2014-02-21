@@ -12,5 +12,3 @@ tags: [test]
 Let's try a new world!
 
 	HelloWorld!
-
-	
