@@ -1,6 +1,6 @@
 ---
 layout: page
-title: tech, thought, and communication
+title: Tattle, Tech, and Thought
 ---
 {% include JB/setup %}
 
@@ -14,4 +14,5 @@ title: tech, thought, and communication
 
 
 
-Thanks for the theme supported by [Jekyll-bootstrap](http://jekyllbootstrap.com/) .
+
+Thanks for the theme powered by [Jekyll-bootstrap](http://jekyllbootstrap.com/) .
