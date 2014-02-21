@@ -1,11 +1,11 @@
 ---
 layout: page
-title: 袁小雍的博客
-tagline: 技术、感悟、交流
+title: Yuan Xiaoyong's Blog
+tagline: tech, thought, and communication
 ---
 {% include JB/setup %}
 
-## 最近的文章：
+## Recent Posts：
 
 <ul class="posts">
   {% for post in site.posts %}
@@ -14,4 +14,6 @@ tagline: 技术、感悟、交流
 </ul>
 
 
+Thanks for the theme supported by [Jekyll-bootstrap](http://jekyllbootstrap.com/) .
 
+© 2014 [Yuan Xiaoyong] All rights reserved.

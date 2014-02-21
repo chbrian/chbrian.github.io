@@ -9,7 +9,8 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : Brian Yuan's Blog
-tagline: 袁小雍的博客
+tagline: tech, thought, and communication
+
 author :
   name : Brian Yuan(袁小雍)
   email : chbrian77@gmail.com

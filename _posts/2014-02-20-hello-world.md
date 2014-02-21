@@ -2,11 +2,15 @@
 layout: post
 title: "Hello World"
 description: ""
-category: 
-tags: []
+category: test
+tags: [test]
 ---
 {% include JB/setup %}
 
-第一篇
+#First Post
+
+Let's try a new world!
 
 	HelloWorld!
+
+	
