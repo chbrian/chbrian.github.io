@@ -13,6 +13,5 @@ title: tech, thought, and communication
 </ul>
 
 
-Thanks for the theme supported by [Jekyll-bootstrap](http://jekyllbootstrap.com/) .
 
-© 2014 [Yuan Xiaoyong] All rights reserved.
+Thanks for the theme supported by [Jekyll-bootstrap](http://jekyllbootstrap.com/) .
