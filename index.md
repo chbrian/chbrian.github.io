@@ -12,4 +12,4 @@ title: Tattle, Tech, and Thought
   {% endfor %}
 </ul>
 
-Thanks for the theme powered by [Jekyll-bootstrap](http://jekyllbootstrap.com/) .
+Thanks for the theme powered by [Jekyll-bootstrap](http://jekyllbootstrap.com/).
