@@ -1,62 +1,66 @@
 ---
 layout: post
-title: "OpenStackĞéÄâ»úresize²Ù×÷ÅäÖÃÓëËµÃ÷"
+title: "OpenStackè™šæ‹Ÿæœºresizeæ“ä½œé…ç½®ä¸è¯´æ˜"
 description: ""
 category: cloud
 tags: [cloud, openstack]
 ---
 {% include JB/setup %}
 
-ÔÚOpenStackÏÂÃæÅäÁËÒ»ÌìµÄresize£¬ÖÕÓÚ³É¹¦ÁË¡£ÔÚÕâÀï¼ÇÂ¼Ò»ÏÂ£¬Ò²¸ø´ó¼Ò×ö²Î¿¼¡£
+åœ¨OpenStackä¸‹é¢é…äº†ä¸€å¤©çš„resizeï¼Œç»ˆäºæˆåŠŸäº†ã€‚åœ¨è¿™é‡Œè®°å½•ä¸€ä¸‹ï¼Œä¹Ÿç»™å¤§å®¶åšå‚è€ƒã€‚
 
-Ö®Ç°ÓĞÍæ¹ıOpenStackÀïÃæµÄlive-migration²Ù×÷£¬ÅäÖÃÆğÀ´Ò²Í¦Âé·³µÄ¡£
-½ñÌìÏëÍæÍæmigration£¬ÓÖÒòÎªmigrationºÍresizeÔÚOpenStack´úÂëÊµÏÖÖĞÆäÊµÊÇÒ»»ØÊÂ£¬ËùÒÔ¾ÍÖ±½Ó²Ù×÷resizeÁË¡£
+ä¹‹å‰æœ‰ç©è¿‡OpenStacké‡Œé¢çš„live-migrationæ“ä½œï¼Œé…ç½®èµ·æ¥ä¹ŸæŒºéº»çƒ¦çš„ã€‚
+ä»Šå¤©æƒ³ç©ç©migrationï¼Œåˆå› ä¸ºmigrationå’Œresizeåœ¨OpenStackä»£ç å®ç°ä¸­å…¶å®æ˜¯ä¸€å›äº‹ï¼Œæ‰€ä»¥å°±ç›´æ¥æ“ä½œresizeäº†ã€‚
 
-Ê×ÏÈ£¬resize¹ËÃûË¼Òå¾ÍÊÇ¸Ä±äinstanceµÄflavor¡£ÒòÎªflavorÉæ¼°µ½cpu¡¢memory¡¢diskµÈºÜ¶à×ÊÔ´£¬Òò´Ë¿ÉÒÔÓÃÀ´¸øinstance×öscale up/down¡£ OpenStack°ÑËüºÍmigration°óÔÚÒ»¿éÊµÏÖ£¬¾ÍÊÇËµÃ÷resizeÔÚ²Ù×÷¹ı³ÌÖĞinstance»áå´»ú¡£²»Ïñlive-migrationÄÇÑù¿ÉÒÔÊµÏÖdowntimeÇ÷½üÓÚ0¡£
+é¦–å…ˆï¼Œresizeé¡¾åæ€ä¹‰å°±æ˜¯æ”¹å˜instanceçš„flavorã€‚å› ä¸ºflavoræ¶‰åŠåˆ°cpuã€memoryã€diskç­‰å¾ˆå¤šèµ„æºï¼Œå› æ­¤å¯ä»¥ç”¨æ¥ç»™instanceåšscale up/downã€‚ OpenStackæŠŠå®ƒå’Œmigrationç»‘åœ¨ä¸€å—å®ç°ï¼Œå°±æ˜¯è¯´æ˜resizeåœ¨æ“ä½œè¿‡ç¨‹ä¸­instanceä¼šå®•æœºã€‚ä¸åƒlive-migrationé‚£æ ·å¯ä»¥å®ç°downtimeè¶‹è¿‘äº0ã€‚
 
-Æä´Î£¬ĞèÒª×¢ÒâµÄÊÇresizeÔÚ`nova.conf`ÀïÓĞÒ»¸öÅäÖÃÏî£º
+å…¶æ¬¡ï¼Œéœ€è¦æ³¨æ„çš„æ˜¯resizeåœ¨`nova.conf`é‡Œæœ‰ä¸€ä¸ªé…ç½®é¡¹ï¼š
 
-	--allow_resize_to_same_host=False
+	allow_resize_to_same_host=False
 
-Ä¬ÈÏÊÇFalse£¬°ÑFalse¸ÄÎªTrueÖ®ºó¾ÍÄÜÔÚÊµÀıËùÔÚµÄhostÉÏresize£¬·ñÔò¾ÍÒªÇ¨ÒÆµ½±ğµÄhostÉÏÔÙ½øĞĞresize¡£ÕâÒ»µãÒ²ÕıËµÃ÷ÁËresizeºÍmigrationÔÚ±¾ÖÊÉÏÊÇÍ¬Ò»¸ö²Ù×÷¡£
+é»˜è®¤æ˜¯Falseï¼ŒæŠŠFalseæ”¹ä¸ºTrueä¹‹åå°±èƒ½åœ¨å®ä¾‹æ‰€åœ¨çš„hostä¸Šresizeï¼Œå¦åˆ™å°±è¦è¿ç§»åˆ°åˆ«çš„hostä¸Šå†è¿›è¡Œresizeã€‚è¿™ä¸€ç‚¹ä¹Ÿæ­£è¯´æ˜äº†resizeå’Œmigrationåœ¨æœ¬è´¨ä¸Šæ˜¯åŒä¸€ä¸ªæ“ä½œã€‚
 
-Ê¹ÓÃresize×î´óµÄÎÊÌâÊÇÔÚmigrationµÄ¹ı³ÌÖĞÊ¹ÓÃssh´ÓÒ»¸öhost¿½±´µ½ÁíÒ»¸öhostÉÏ¡£Õâ¾ÍĞèÒªÁ½±ßµÄhost¶¼Í¨¹ısshÈÏÖ¤¡£¶øÄ¬ÈÏµÄÇé¿öÏÔÈ»ÊÇÃ»ÓĞÈÏÖ¤µÄ¡£
+ä½¿ç”¨resizeæœ€å¤§çš„é—®é¢˜æ˜¯åœ¨migrationçš„è¿‡ç¨‹ä¸­ä½¿ç”¨sshä»ä¸€ä¸ªhostæ‹·è´åˆ°å¦ä¸€ä¸ªhostä¸Šã€‚è¿™å°±éœ€è¦ä¸¤è¾¹çš„hostéƒ½é€šè¿‡sshè®¤è¯ã€‚è€Œé»˜è®¤çš„æƒ…å†µæ˜¾ç„¶æ˜¯æ²¡æœ‰è®¤è¯çš„ã€‚
 
 
-ÏÂÃæÊÇÏêÏ¸µÄÅäÖÃ²½Öè£º
+ä¸‹é¢æ˜¯è¯¦ç»†çš„é…ç½®æ­¥éª¤ï¼š
 
-1.Ê×ÏÈĞèÒªÇĞ»»µ½novaÓÃ»§
+1.é¦–å…ˆéœ€è¦åˆ‡æ¢åˆ°novaç”¨æˆ·
 
 	usermod -s /bin/bash nova  
 	su nova
 
-2.´´½¨`.ssh`ÎÄ¼ş¼Ğ£¬×¢ÒâÎÄ¼ş¼ĞĞèÒªÔÚ`/var/lib/nova/`ÏÂ´´½¨£¬±ğµ½`/root/`ÏÂÁË¡£È»ºó½øµ½Õâ¸öÎÄ¼ş¼Ğ¡£
+2.åˆ›å»º`.ssh`æ–‡ä»¶å¤¹ï¼Œæ³¨æ„æ–‡ä»¶å¤¹éœ€è¦åœ¨`/var/lib/nova/`ä¸‹åˆ›å»ºï¼Œåˆ«åˆ°`/root/`ä¸‹äº†ã€‚ç„¶åè¿›åˆ°è¿™ä¸ªæ–‡ä»¶å¤¹ã€‚
 
 	mkdir -p -m 700 .ssh 
 	cd /var/lib/nova/.ssh
 
-3.È¡ÏûÉí·İÑéÖ¤
+3.å–æ¶ˆèº«ä»½éªŒè¯
 
 	vi config
 	Host *
 	  StrictHostKeyChecking no
 	  UserKnownHostsFile=/dev/null
 	  
-4.Éú³Éssh key£¬²¢¿½±´Îª`authorized_keys`
+4.ç”Ÿæˆssh keyï¼Œå¹¶æ‹·è´ä¸º`authorized_keys`
 	
 	ssh-keygen -f id_rsa -b 1024 -P ""
 	cp -a /var/lib/nova/.ssh/id_rsa.pub /var/lib/nova/.ssh/authorized_keys
 	
-5.¿½±´µ½ÆäËû¼ÆËã½ÚµãHOSTIP
+5.æ‹·è´åˆ°å…¶ä»–è®¡ç®—èŠ‚ç‚¹HOSTIP
 	
 	scp /var/lib/nova/.ssh/id_rsa root@HOSTIP:/var/lib/nova/.ssh/id_rsa
 	scp /var/lib/nova/.ssh/authorized_keys root@HOSTIP:/var/lib/nova/.ssh/authorized_keys
 	
-6.ÔÚÃ¿¸ö¼ÆËã½Úµã¸ü¸ÄÎÄ¼şÈ¨ÏŞ£¬ÒòÎªresizeÊÇnovaÓÃ»§Ö´ĞĞµÄ£¬ËùÒÔÒ»¶¨Òª¸Ä³Énova¡£
+6.åœ¨æ¯ä¸ªè®¡ç®—èŠ‚ç‚¹æ›´æ”¹æ–‡ä»¶æƒé™ï¼Œå› ä¸ºresizeæ˜¯novaç”¨æˆ·æ‰§è¡Œçš„ï¼Œæ‰€ä»¥ä¸€å®šè¦æ”¹æˆnovaã€‚
 
 	chown nova:nova /var/lib/nova/.ssh/id_rsa /var/lib/nova/.ssh/authorized_keys
 	chown nova:nova /var/lib/nova/.ssh/id_rsa /var/lib/nova/.ssh/authorized_keys
 	
-Ö®ºó¾Í¿ÉÒÔÕı³£Ê¹ÓÃresize¹¦ÄÜÁË¡£
+ä¹‹åå°±å¯ä»¥æ­£å¸¸ä½¿ç”¨resizeåŠŸèƒ½äº†ã€‚
 
-ÕâÀïÔÙ†ªàÂÁ½¾ä£¬ÉèÖÃ`.ssh`ÎÄ¼ş¼ĞÒÔ¼°`authorized_keys`ÎÄ¼şµÄÈ¨ÏŞÊ±Ò»¶¨ÒªĞ¡ĞÄ£¬ÎÒ¾ÍÊÇÒòÎªÈ¨ÏŞÒ»²»Ğ¡ĞÄÉèÖÃ´íÁË£¬µ¼ÖÂÔËĞĞresizeÊ±Ò»Ö±±¨´í¡£
+è¿™é‡Œå†å•°å—¦ä¸¤å¥ï¼Œè®¾ç½®`.ssh`æ–‡ä»¶å¤¹ä»¥åŠ`authorized_keys`æ–‡ä»¶çš„æƒé™æ—¶ä¸€å®šè¦å°å¿ƒï¼Œæˆ‘å°±æ˜¯å› ä¸ºæƒé™ä¸€ä¸å°å¿ƒè®¾ç½®é”™äº†ï¼Œå¯¼è‡´è¿è¡Œresizeæ—¶ä¸€ç›´æŠ¥é”™ã€‚
+
+å‚è€ƒèµ„æ–™ï¼š
+1. å­”å…„çš„[nova resizeä¿®æ”¹å®ä¾‹é…ç½®æŠ¥é”™çš„è§£å†³åŠæ³•](http://blog.csdn.net/lynn_kong/article/details/8891247)
+2. [OpenStack Ask](https://ask.openstack.org/en/question/10335/ssh-resize/)
