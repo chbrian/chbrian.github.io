@@ -55,11 +55,18 @@ tags: [cloud, openstack]
 6.在每个计算节点更改文件权限，因为resize是nova用户执行的，所以一定要改成nova。
 
 	chown nova:nova /var/lib/nova/.ssh/id_rsa /var/lib/nova/.ssh/authorized_keys
-	chown nova:nova /var/lib/nova/.ssh/id_rsa /var/lib/nova/.ssh/authorized_keys
 	
 之后就可以正常使用resize功能了。
 
 这里再啰嗦两句，设置`.ssh`文件夹以及`authorized_keys`文件的权限时一定要小心，我就是因为权限一不小心设置错了，导致运行resize时一直报错。
+
+如果还是有问题，可以都改成以下权限
+	
+	su nova
+	chmod 751 /var/lib/nova -R
+	chmod 700 /var/lib/nova/.ssh -R
+
+估计就没问题了。总之，我觉得OpenStack由于放弃了对于ssh权限的控制，而且用的是nova用户，人工配置起来还挺麻烦的。
 
 参考资料：
 1. 孔兄的[nova resize修改实例配置报错的解决办法](http://blog.csdn.net/lynn_kong/article/details/8891247)
