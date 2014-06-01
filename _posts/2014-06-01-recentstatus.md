@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "最近的我，以及之前的"
+title: "最近的我"
 description: ""
 category: life
 tags: [life, feeling, work]
