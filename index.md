@@ -4,6 +4,8 @@ title: Tattle, Tech, and Thought
 ---
 {% include JB/setup %}
 
+I'm pursuing a Ph.D position, if you're interested in me, pls contact me through email.
+
 ## Recent Posts：
 
 <ul class="posts">
